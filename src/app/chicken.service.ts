@@ -26,6 +26,7 @@ const chickenTransform = (rawChicken: any): Chicken => {
 export class ChickenService {
 
   cachedChickens;
+  cachedEggCount;
 
   constructor(
     private http: HttpClient
@@ -48,6 +49,16 @@ export class ChickenService {
       chickens.forEach((chicken:any) => (this.cachedChickens[chicken.sys_id] = chickenTransform(chicken)));
       console.log(this.cachedChickens);
       return Object.values(this.cachedChickens);
+    })
+    .catch((error) => {
+      console.error(`error: ${error}`);
+    });
+  }
+
+  getEggCount() : Promise<any> {
+    return instance.get('/chickens/eggcount', {method: 'get'}).then((response) => {
+      console.log(response.data.result);
+      return response.data.result;
     })
     .catch((error) => {
       console.error(`error: ${error}`);

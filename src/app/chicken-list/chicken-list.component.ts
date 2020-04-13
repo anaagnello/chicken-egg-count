@@ -10,6 +10,7 @@ import { Chicken } from '../chicken';
 })
 export class ChickenListComponent implements OnInit {
   chickens: Chicken[];
+  eggCount: any;
   loading: boolean;
 
   constructor(
@@ -19,10 +20,16 @@ export class ChickenListComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.getChickens();
+    this.getEggCount();
   }
 
   async getChickens(): Promise<void> {
     this.chickens = await this.chickenService.getChickens();
+    
+  }
+
+  async getEggCount(): Promise<void> {
+    this.eggCount = this.chickenService.getEggCount();
     this.loading = false;
   }
 }
