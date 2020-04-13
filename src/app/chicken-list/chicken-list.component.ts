@@ -10,7 +10,7 @@ import { Chicken } from '../chicken';
 })
 export class ChickenListComponent implements OnInit {
   chickens: Chicken[];
-  eggCount: any;
+  eggCount: number;
   loading: boolean;
 
   constructor(
@@ -29,7 +29,7 @@ export class ChickenListComponent implements OnInit {
   }
 
   async getEggCount(): Promise<void> {
-    this.eggCount = this.chickenService.getEggCount();
+    this.eggCount = await this.chickenService.getEggCount();
     this.loading = false;
   }
 }

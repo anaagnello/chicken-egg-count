@@ -57,8 +57,12 @@ export class ChickenService {
 
   getEggCount() : Promise<any> {
     return instance.get('/chickens/eggcount', {method: 'get'}).then((response) => {
-      console.log(response.data.result);
-      return response.data.result;
+      const eggCounts: any = response.data.result;
+      let eggs: number = 0;
+      eggCounts.forEach((eggCount:any) => (eggs += +eggCount.stats.sum.egg_count));
+
+      console.log('egg count', eggs);
+      return eggs;
     })
     .catch((error) => {
       console.error(`error: ${error}`);

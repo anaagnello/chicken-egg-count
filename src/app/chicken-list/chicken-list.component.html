@@ -2,9 +2,12 @@
 <div *ngIf="loading">
   <p>Loading...</p>
 </div>
-<ul *ngIf="!loading">
-  <li *ngFor="let chicken of chickens"><a routerLink="chicken/{{chicken.chickenId}}">{{ chicken.name }}</a>
-  <p>Breed: {{ chicken.breed}} </p>
-  <img class="chicken-list-img" src="https://cmdbana.service-now.com/{{chicken.pictureUrl}}" />
-  </li>
-</ul>
+<div *ngIf="!loading">
+  <ul>
+    <li *ngFor="let chicken of chickens"><a routerLink="chicken/{{chicken.chickenId}}">{{ chicken.name }}</a>
+    <p>Breed: {{ chicken.breed}} </p>
+    <img class="chicken-list-img" src="https://cmdbana.service-now.com/{{chicken.pictureUrl}}" />
+    </li>
+  </ul>
+  <p>Total Egg Count: {{eggCount}}</p>
+</div>
