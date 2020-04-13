@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { CustomMaterialModule } from './material.module';
+
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ChickenListComponent } from './chicken-list/chicken-list.component';
@@ -14,6 +16,7 @@ import { ChickenService } from './chicken.service';
   imports: [
     BrowserModule,
     HttpClientModule,
+    CustomMaterialModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: '', component: ChickenListComponent },
