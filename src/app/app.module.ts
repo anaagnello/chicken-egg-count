@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ChickenListComponent } from './chicken-list/chicken-list.component';
 import { ChickenComponent } from './chicken/chicken.component';
-import { ChickenServiceService } from './chicken-service.service';
+import { ChickenService } from './chicken.service';
 
 @NgModule({
   imports: [
@@ -26,6 +26,6 @@ import { ChickenServiceService } from './chicken-service.service';
     ChickenComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: [ChickenServiceService]
+  providers: [ChickenService]
 })
 export class AppModule { }
