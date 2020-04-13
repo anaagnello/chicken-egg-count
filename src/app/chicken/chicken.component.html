@@ -1,8 +1,8 @@
 <div *ngIf="chicken" class="chicken-details">
   <div>
-    <h2>{{chicken.chicken_name}}</h2>
-    <p>{{chicken.chicken_breed.display_value}}</p>
-    <img class="chicken-detail-img" src="https://cmdbana.service-now.com/{{chicken.picture.display_value}}" />
+    <h2>{{chicken.name}}</h2>
+    <p>{{chicken.breed}</p>
+    <img class="chicken-detail-img" src="https://cmdbana.service-now.com/{{chicken.pictureUrl}}" />
   </div>
 </div>
 <button (click)="goBack()">go back</button>

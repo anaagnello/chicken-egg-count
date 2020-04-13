@@ -10,6 +10,18 @@ const instance = axios.create({
   headers: {'x-api-key': '5V21n0xkveRFwlgEGkJX5nMWXlHHLiK6nHrUHMM4'}
 });
 
+const chickenTransform = (rawChicken: any): Chicken => {
+  return {
+    chickenId: rawChicken.sys_id,
+    breed: rawChicken.chicken_breed.display_value,
+    name: rawChicken.chicken_name,
+    birthdate: new Date(`${rawChicken.birthdate} UTC`),
+    pictureUrl: rawChicken.picture.display_value,
+    purchasedDate: new Date(`${rawChicken.purchased_date} UTC`),
+    notes: rawChicken.chicken_notes,
+  };
+};
+
 @Injectable()
 export class ChickenService {
 
@@ -31,11 +43,11 @@ export class ChickenService {
 
     return instance.get('/chickens', {method: 'get'}).then((response) => {
       //console.log('response', response);
-      const chickens: any[] = response.data.result;
+      const chickens: Chicken[] = response.data.result;
       this.cachedChickens = {};
-      chickens.forEach((chicken:Chicken) => (this.cachedChickens[chicken.sys_id] = chicken));
+      chickens.forEach((chicken:any) => (this.cachedChickens[chicken.sys_id] = chickenTransform(chicken)));
       console.log(this.cachedChickens);
-      return chickens;
+      return Object.values(this.cachedChickens);
     })
     .catch((error) => {
       console.error(`error: ${error}`);

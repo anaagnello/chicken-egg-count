@@ -3,8 +3,8 @@
   <p>Loading...</p>
 </div>
 <ul *ngIf="!loading">
-  <li *ngFor="let chicken of chickens"><a routerLink="chicken/{{chicken.sys_id}}">{{ chicken.chicken_name }}</a>
-  <p>Breed: {{ chicken.chicken_breed.display_value}} </p>
-  <img class="chicken-list-img" src="https://cmdbana.service-now.com/{{chicken.picture.display_value}}" />
+  <li *ngFor="let chicken of chickens"><a routerLink="chicken/{{chicken.chickenId}}">{{ chicken.name }}</a>
+  <p>Breed: {{ chicken.breed}} </p>
+  <img class="chicken-list-img" src="https://cmdbana.service-now.com/{{chicken.pictureUrl}}" />
   </li>
 </ul>

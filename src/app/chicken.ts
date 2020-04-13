@@ -1,5 +1,9 @@
-export class Chicken {
+export type Chicken = {
   name: string;
   breed: string;
-  sys_id: string;  
-}
+  chickenId: string;
+  birthdate: Date;
+  pictureUrl: string;
+  purchasedDate: Date;
+  notes: string;
+};
