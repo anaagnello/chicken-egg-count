@@ -1,6 +1,8 @@
 <div *ngIf="chicken" class="chicken-details">
-  <button color="primary" mat-button (click)="goBack()">go back</button>
   <div>
-    {{chicken.name}}
+    <h2>{{chicken.chicken_name}}</h2>
+    <p>{{chicken.chicken_breed.display_value}}</p>
+    <img class="chicken-detail-img" src="https://cmdbana.service-now.com/{{chicken.picture.display_value}}" />
   </div>
 </div>
+<button (click)="goBack()">go back</button>

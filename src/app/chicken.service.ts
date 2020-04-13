@@ -13,17 +13,29 @@ const instance = axios.create({
 @Injectable()
 export class ChickenService {
 
-  chickens = [];
+  cachedChickens;
 
   constructor(
     private http: HttpClient
   ) { }
 
+  async getChicken(id: string) : Promise<Chicken> {
+    console.log('id: ', id);
+    if (!this.cachedChickens) {
+      await this.getChickens();
+    }
+    return Promise.resolve(this.cachedChickens && this.cachedChickens[id]);
+  }
+
   getChickens() : Promise<Chicken[]> {
 
     return instance.get('/chickens', {method: 'get'}).then((response) => {
-      console.log('response', response);
-      return response.data.result
+      //console.log('response', response);
+      const chickens: any[] = response.data.result;
+      this.cachedChickens = {};
+      chickens.forEach((chicken:Chicken) => (this.cachedChickens[chicken.sys_id] = chicken));
+      console.log(this.cachedChickens);
+      return chickens;
     })
     .catch((error) => {
       console.error(`error: ${error}`);
