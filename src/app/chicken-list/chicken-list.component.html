@@ -1,6 +1,6 @@
 <h2>Chickens</h2>
 <ul>
-  <li *ngFor="let chicken of chickens"><a>{{ chicken.chicken_name }}</a>
+  <li *ngFor="let chicken of chickens"><a routerLink="chicken/{{chicken.sys_id}}">{{ chicken.chicken_name }}</a>
   <p>Breed: {{ chicken.chicken_breed.display_value}} </p>
   <img class="chicken-image" src="https://cmdbana.service-now.com/{{chicken.picture.display_value}}" />
   </li>

@@ -1,4 +1,6 @@
 <div *ngIf="chicken" class="chicken-details">
-  <mat-card>
-  </mat-card>
+  <button color="primary" mat-button (click)="goBack()">go back</button>
+  <div>
+    {{chicken.name}}
+  </div>
 </div>
