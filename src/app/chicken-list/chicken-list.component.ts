@@ -9,7 +9,7 @@ import { Chicken } from '../chicken';
   styleUrls: ['./chicken-list.component.css']
 })
 export class ChickenListComponent implements OnInit {
-  chickens = Chicken[];
+  chickens: Chicken[];
   constructor(
     private chickenService: ChickenService
   ) { }
@@ -18,8 +18,8 @@ export class ChickenListComponent implements OnInit {
     this.getChickens();
   }
 
-  getChickens(): void {
+  async getChickens(): Promise<void> {
     //this.chickens = ["Suzie", "goldi"];
-    this.chickenService.getChickens().subscribe(chickens => this.chickens = chickens);
+    this.chickens = await this.chickenService.getChickens();
   }
 }
