@@ -22,7 +22,8 @@ export class ChickenService {
   getChickens() : Promise<Chicken[]> {
 
     return instance.get('/chickens', {method: 'get'}).then((response) => {
-      return response.result
+      console.log('response', response);
+      return response.data.result
     })
     .catch((error) => {
       console.error(`error: ${error}`);
